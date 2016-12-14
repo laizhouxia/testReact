@@ -13,52 +13,52 @@ const styles = {
     justifyContent: 'space-around',
   },
   gridList: {
-    width: 500,
-    height: 450,
+    width: '100%',
+    height: '100%',
     overflowY: 'auto',
   },
 }
 
 const tilesData = [
   {
-    img: 'images/grid-list/00-52-29-429_640.jpg',
+    img: 'http://www.mavikadin.com/images/ckfiles/images/bebeklere-cilek-ne-zaman-verilir-1.jpg',
     title: 'Breakfast',
-    author: 'jill111',
+    author: '$11.24',
   },
   {
-    img: 'images/grid-list/burger-827309_640.jpg',
+    img: 'http://www.greatgrubclub.com/domains/greatgrubclub.com/local/media/images/medium/4_1_1_apple.jpg',
     title: 'Tasty burger',
-    author: 'pashminu',
+    author: '$14.24',
   },
   {
-    img: 'images/grid-list/camera-813814_640.jpg',
+    img: 'https://sciencebob.com/wp-content/uploads/2015/04/tomato_small.png',
     title: 'Camera',
-    author: 'Danson67',
+    author: '$11.00',
   },
   {
-    img: 'images/grid-list/morning-819362_640.jpg',
+    img: 'https://i1.wp.com/invorma.com/wp-content/uploads/2015/06/Crenshaw-Melon.jpg',
     title: 'Morning',
-    author: 'fancycrave1',
+    author: '$131.00',
   },
   {
-    img: 'images/grid-list/hats-829509_640.jpg',
+    img: 'https://s-media-cache-ak0.pinimg.com/originals/da/e2/2c/dae22c646f8c6e1f27ee742c2474bb27.jpg',
     title: 'Hats',
-    author: 'Hans',
+    author: '$11.00',
   },
   {
-    img: 'images/grid-list/honey-823614_640.jpg',
+    img: 'http://wallpapersdsc.net/wp-content/uploads/2016/09/Fruit-HD.jpg',
     title: 'Honey',
-    author: 'fancycravel',
+    author: '$11.00',
   },
   {
-    img: 'images/grid-list/vegetables-790022_640.jpg',
+    img: 'http://pslainc.com/wp-content/uploads/2015/09/dragon-fruit-pitaya.jpg',
     title: 'Vegetables',
-    author: 'jill111',
+    author: '$11.00',
   },
   {
-    img: 'images/grid-list/water-plant-821293_640.jpg',
+    img: 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQp98vXKu9NkuL5r64tGBK_HaPIhE5BjSHJO0eupzuGIijlBoLb',
     title: 'Water plant',
-    author: 'BkrmadtyaKarki',
+    author: '$311.00',
   },
 ]
 
@@ -85,7 +85,7 @@ const tilesData = [
              <GridTile
                key={tile.img}
                title={tile.title}
-               subtitle={<span>by <b>{tile.author}</b></span>}
+               subtitle={<span><b>{tile.author}</b></span>}
                actionIcon={<IconButton><StarBorder color="white" /></IconButton>}
              >
                <img src={tile.img} />
