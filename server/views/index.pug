@@ -1,0 +1,12 @@
+extends layout
+
+block scripts
+  script(type="text/javascript").
+    AppSetting = !{JSON.stringify(settings)};
+
+block content
+  #index
+    #main
+     | !{serverAppHtml}
+
+  script(src="/js/app.js") 

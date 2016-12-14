@@ -1,0 +1,21 @@
+# Development Environment Config
+
+# Flag to indicate if this config is for production
+isProduction: false
+
+# Gulp Related Config
+gulp:
+  isWatching: true
+  uglify: false
+  pm2:
+    interpreterArgs: '--debug'
+    watch: true
+
+# Web Server Config
+webServer:
+  port: 3000
+
+# API Server Config
+apiServer:
+  apiKey: '1'
+  endPoint: 'http://localhost:8080'
