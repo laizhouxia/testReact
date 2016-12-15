@@ -21,50 +21,42 @@ const styles = {
 const tilesData = [
   {
     img: 'http://www.mavikadin.com/images/ckfiles/images/bebeklere-cilek-ne-zaman-verilir-1.jpg',
-    title: 'Breakfast',
-    author: '11.24',
+    title: 'strawberry',
     price: 11,
   },
   {
     img: 'http://www.greatgrubclub.com/domains/greatgrubclub.com/local/media/images/medium/4_1_1_apple.jpg',
-    title: 'Tasty burger',
-    author: '$14.24',
+    title: 'apple',
     price: 110,
   },
   {
     img: 'https://sciencebob.com/wp-content/uploads/2015/04/tomato_small.png',
-    title: 'Camera',
-    author: '$11.00',
+    title: 'tomato',
     price: 120,
   },
   {
     img: 'https://i1.wp.com/invorma.com/wp-content/uploads/2015/06/Crenshaw-Melon.jpg',
-    title: 'Morning',
-    author: '$131.00',
+    title: 'papaya',
     price: 220,
   },
   {
     img: 'https://s-media-cache-ak0.pinimg.com/originals/da/e2/2c/dae22c646f8c6e1f27ee742c2474bb27.jpg',
-    title: 'Hats',
-    author: '$11.00',
+    title: 'cherry',
     price: 61,
   },
   {
     img: 'http://wallpapersdsc.net/wp-content/uploads/2016/09/Fruit-HD.jpg',
-    title: 'Honey',
-    author: '$11.00',
+    title: 'kiwi fruit',
     price: 30,
   },
   {
     img: 'http://pslainc.com/wp-content/uploads/2015/09/dragon-fruit-pitaya.jpg',
-    title: 'Vegetables',
-    author: '$11.00',
+    title: 'dragon fruit',
     price: 88,
   },
   {
     img: 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQp98vXKu9NkuL5r64tGBK_HaPIhE5BjSHJO0eupzuGIijlBoLb',
-    title: 'Water plant',
-    author: '$311.00',
+    title: 'avocado',
     price: 130,
   },
 ]
