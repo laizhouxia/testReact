@@ -5,6 +5,11 @@ import Subheader from 'material-ui/Subheader'
 import StarBorder from 'material-ui/svg-icons/toggle/star-border'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
+import AppBar from 'material-ui/AppBar'
+import Drawer from 'material-ui/Drawer'
+import MenuItem from 'material-ui/MenuItem'
+import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card'
+import {Table, TableBody, TableFooter, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui/Table'
 
 const styles = {
   root: {
@@ -67,13 +72,33 @@ const tilesData = [
     this.state = {
       price: 0,
       count: 0,
+      open: false,
+      selected: []
     }
   }
 
-  _handleButtonClick(price) {
+  _handleClose(){
+    this.setState({open: false})
+  }
+
+  _handleButtonClick(item) {
+    var selected = this.state.selected
+    var found = false
+    selected.map((i) => {
+      if(i.title == item.title) {
+        found = true
+        i.count = i.count + 1
+      }
+    })
+    if(!found) {
+      item.count = 1
+      selected.push(item)
+    }
+
     this.setState({
       count: this.state.count + 1,
-      price: this.state.price + price,
+      price: this.state.price + item.price,
+      selected: selected,
     })
   }
 
@@ -85,10 +110,13 @@ const tilesData = [
    return (
     <MuiThemeProvider muiTheme={muiTheme}>
       <div style={{height: '100%'}}>
-        <div style={{position: 'fixed', zIndex: 1, top: '0px', height: '40px', backgroundColor: 'yellow', width: '100%'}}>
-          <Subheader>Count: {this.state.count} | Price: {this.state.price}</Subheader>
-        </div>
-        <div style={{height: '40px', width: '100%'}}></div>
+        <AppBar
+          style={{position: 'fixed'}}
+          title={"Count: "+ this.state.count + " | Price: " + this.state.price}
+          iconClassNameRight="muidocs-icon-navigation-expand-more"
+          onLeftIconButtonTouchTap={() => this.setState({open: true})}
+        />
+        <div style={{height: '80px', width: '100%'}}></div>
         <div style={styles.root}>
           <GridList
             cellHeight={180}
@@ -99,13 +127,52 @@ const tilesData = [
                   key={item.img}
                   title={item.title}
                   subtitle={<span>{'$ '}<b>{item.price}</b></span>}
-                  actionIcon={<IconButton onClick={this._handleButtonClick.bind(this, item.price)}><StarBorder color="white" /></IconButton>}
+                  actionIcon={<IconButton onClick={this._handleButtonClick.bind(this, item)}><StarBorder color="white" /></IconButton>}
                   >
                     <img src={item.img} />
                 </GridTile>
               ))}
           </GridList>
         </div>
+        <Drawer
+          docked={false}
+          width={250}
+          open={this.state.open}
+          onRequestChange={(open) => this.setState({open})}
+        >
+          <Card>
+            <CardMedia
+              overlay={<CardTitle title="Welcome" />}
+            >
+              <img src="http://www.hotel-r.net/im/hotel/es/nice-view-16.jpg" />
+            </CardMedia>
+          </Card>
+          <Table
+            fixedHeader={true}
+            fixedFooter={false}
+            selectable={false}
+            multiSelectable={false}
+          >
+            <TableBody
+              displayRowCheckbox={false}
+              deselectOnClickaway={false}
+              showRowHover={false}
+              stripedRows={false}
+            >
+              <TableRow key={'header'}>
+                <TableRowColumn style={{width: '60%'}}>Fruit</TableRowColumn>
+                <TableRowColumn style={{width: '40%'}}>Count</TableRowColumn>
+              </TableRow>
+              {this.state.selected.map((item) => (
+                <TableRow key={item.img}>
+                  <TableRowColumn style={{width: '60%'}}>{item.title}</TableRowColumn>
+                  <TableRowColumn style={{width: '40%'}}>{item.count}</TableRowColumn>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+
+        </Drawer>
       </div>
     </MuiThemeProvider>
 
