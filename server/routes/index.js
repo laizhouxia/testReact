@@ -1,6 +1,5 @@
 import express from 'express'
 import ClaimBuyerAppContainer from '../client/components/appContainer'
-import * as axinan from '../auth/axinan/index'
 
 const BUYER_TYPE = 'buyer'
 const MERCHANT_TYPE = 'merchant'
