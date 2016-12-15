@@ -14,7 +14,6 @@ const styles = {
   },
   gridList: {
     width: '100%',
-    height: '100%',
     overflowY: 'auto',
   },
 }
@@ -23,77 +22,100 @@ const tilesData = [
   {
     img: 'http://www.mavikadin.com/images/ckfiles/images/bebeklere-cilek-ne-zaman-verilir-1.jpg',
     title: 'Breakfast',
-    author: '$11.24',
+    author: '11.24',
+    price: 11,
   },
   {
     img: 'http://www.greatgrubclub.com/domains/greatgrubclub.com/local/media/images/medium/4_1_1_apple.jpg',
     title: 'Tasty burger',
     author: '$14.24',
+    price: 110,
   },
   {
     img: 'https://sciencebob.com/wp-content/uploads/2015/04/tomato_small.png',
     title: 'Camera',
     author: '$11.00',
+    price: 120,
   },
   {
     img: 'https://i1.wp.com/invorma.com/wp-content/uploads/2015/06/Crenshaw-Melon.jpg',
     title: 'Morning',
     author: '$131.00',
+    price: 220,
   },
   {
     img: 'https://s-media-cache-ak0.pinimg.com/originals/da/e2/2c/dae22c646f8c6e1f27ee742c2474bb27.jpg',
     title: 'Hats',
     author: '$11.00',
+    price: 61,
   },
   {
     img: 'http://wallpapersdsc.net/wp-content/uploads/2016/09/Fruit-HD.jpg',
     title: 'Honey',
     author: '$11.00',
+    price: 30,
   },
   {
     img: 'http://pslainc.com/wp-content/uploads/2015/09/dragon-fruit-pitaya.jpg',
     title: 'Vegetables',
     author: '$11.00',
+    price: 88,
   },
   {
     img: 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQp98vXKu9NkuL5r64tGBK_HaPIhE5BjSHJO0eupzuGIijlBoLb',
     title: 'Water plant',
     author: '$311.00',
+    price: 130,
   },
 ]
 
  export default class AppContainer extends Component {
-   constructor(props) {
-     super(props)
-   }
+  constructor(props) {
+    super(props)
+    this.state = {
+      price: 0,
+      count: 0,
+    }
+  }
+
+  _handleButtonClick(price) {
+    this.setState({
+      count: this.state.count + 1,
+      price: this.state.price + price,
+    })
+  }
 
   render() {
-
     const muiTheme = getMuiTheme({
       userAgent: this.props.userAgent,
     })
 
    return (
-     <MuiThemeProvider muiTheme={muiTheme}>
-       <div style={styles.root}>
-         <GridList
-           cellHeight={180}
-           style={styles.gridList}
-         >
-           <Subheader>December</Subheader>
-           {tilesData.map((tile) => (
-             <GridTile
-               key={tile.img}
-               title={tile.title}
-               subtitle={<span><b>{tile.author}</b></span>}
-               actionIcon={<IconButton><StarBorder color="white" /></IconButton>}
-             >
-               <img src={tile.img} />
-             </GridTile>
-           ))}
-         </GridList>
-       </div>
-     </MuiThemeProvider>
+    <MuiThemeProvider muiTheme={muiTheme}>
+      <div style={{height: '100%'}}>
+        <div style={{position: 'fixed', zIndex: 1, top: '0px', height: '40px', backgroundColor: 'yellow', width: '100%'}}>
+          <Subheader>Count: {this.state.count} | Price: {this.state.price}</Subheader>
+        </div>
+        <div style={{height: '40px', width: '100%'}}></div>
+        <div style={styles.root}>
+          <GridList
+            cellHeight={180}
+            style={styles.gridList}
+            >
+              {tilesData.map((item) => (
+                <GridTile
+                  key={item.img}
+                  title={item.title}
+                  subtitle={<span>{'$ '}<b>{item.price}</b></span>}
+                  actionIcon={<IconButton onClick={this._handleButtonClick.bind(this, item.price)}><StarBorder color="white" /></IconButton>}
+                  >
+                    <img src={item.img} />
+                </GridTile>
+              ))}
+          </GridList>
+        </div>
+      </div>
+    </MuiThemeProvider>
 
    )
   }
